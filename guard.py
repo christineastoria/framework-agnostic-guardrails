@@ -293,7 +293,11 @@ class OpenEvalsGuardrail(BaseGuardrail):
         """Run OpenEvals evaluator and adapt result format"""
         try:
             # OpenEvals returns: {"score": bool/float, "comment": str, ...}
-            result = self._evaluator(outputs=text)
+            result = self._evaluator(
+                inputs="",
+                outputs=text,
+                reference_outputs="", 
+            )
             
             # Adapt to our format
             passed = bool(result.get("score", False))

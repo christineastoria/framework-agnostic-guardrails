@@ -15,6 +15,9 @@ dev = [
     "black>=23.0.0",
     "mypy>=1.0.0",
 ]
+tracing = [
+    "langsmith>=0.1.0",
+]
 
 [build-system]
 requires = ["setuptools>=61.0"]
@@ -25,4 +28,7 @@ py-modules = ["guard"]
 
 [dependency-groups]
 dev = []
+tracing = [
+    "langsmith>=0.1.0",
+]
 
