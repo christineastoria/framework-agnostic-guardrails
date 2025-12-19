@@ -2,13 +2,19 @@
 
 A simple, framework-agnostic wrapper for adding guardrails to AI agents at the application level.
 
-## Philosophy
+## Guard() Wrapper
+
+`Guard()` is a wrapper that provides input and output validation for AI agent calls. It operates as application-level middleware:
+1. Validates user input before execution (e.g., prompt injection detection, PII screening)
+2. Executes your agent using any framework
+3. Validates agent output before returning results (e.g., regulatory compliance, hallucination detection)
 
 We believe **application-level guardrails are more effective** than placing guardrails in the observability layer. Security and compliance decisions should be made where they matter most - in your application code, before and after your agent runs.
 
 Inspired by [LangChain's guardrails middleware](https://docs.langchain.com/oss/python/langchain/guardrails), but designed to work with **any agent framework**.
 
 This project demonstrates how easy it is to integrate guardrails into your agent using open-source tools like [OpenEvals](https://github.com/langchain-ai/openevals).
+
 
 ## Quick Start
 
