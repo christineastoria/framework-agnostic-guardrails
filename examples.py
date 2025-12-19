@@ -32,6 +32,18 @@ from guard import (
 # Load environment variables from .env file
 load_dotenv()
 
+# LangSmith tracing (optional)
+try:
+    from langsmith import traceable
+    LANGSMITH_AVAILABLE = True
+except ImportError:
+    LANGSMITH_AVAILABLE = False
+    # Create a no-op decorator if LangSmith is not available
+    def traceable(*args, **kwargs):
+        def decorator(func):
+            return func
+        return decorator
+
 # Verify API key is set (required for LLM-based guardrails)
 if not os.getenv("OPENAI_API_KEY"):
     print("\n" + "=" * 70)
@@ -53,6 +65,17 @@ print("=" * 70)
 # ========================================
 # Helper Functions
 # ========================================
+
+# Add tracing to Guard.run() if LangSmith is available
+if LANGSMITH_AVAILABLE:
+    original_run = Guard.run
+    
+    @traceable(name="Guard.run")
+    def traced_run(self, user_input, agent_call, ctx=None):
+        return original_run(self, user_input, agent_call, ctx)
+    
+    Guard.run = traced_run
+
 
 def show_result(test_name: str, result, expected_block: bool):
     """Display test results in a clear, consistent format"""
