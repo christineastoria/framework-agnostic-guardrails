@@ -67,8 +67,6 @@ class GuardResult:
 class BaseGuardrail(ABC):
     """
     Base class for guardrails.
-    
-    Similar to LangChain's middleware pattern but framework-agnostic.
     Subclass this to create custom validators.
     """
     

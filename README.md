@@ -11,8 +11,6 @@ A simple, framework-agnostic wrapper for adding guardrails to AI agents at the a
 
 We believe **application-level guardrails are more effective** than placing guardrails in the observability layer. Security and compliance decisions should be made where they matter most - in your application code, before and after your agent runs.
 
-Inspired by [LangChain's guardrails middleware](https://docs.langchain.com/oss/python/langchain/guardrails), but designed to work with **any agent framework**.
-
 This project demonstrates how easy it is to integrate guardrails into your agent using open-source tools like [OpenEvals](https://github.com/langchain-ai/openevals).
 
 
